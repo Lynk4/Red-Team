@@ -151,6 +151,7 @@ https://github.com/user-attachments/assets/f070e9e1-6d29-476d-92fe-e3e562e9edad
 
 ---
 
-## 🧑‍💻 Further Reading:
-- [MSDN Process Functions](https://learn.microsoft.com/en-us/windows/win32/procthread/process-creation)
-- Malware Development Blogs and Resources
+## Refrences:
+  - https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-openprocess
+
+---
