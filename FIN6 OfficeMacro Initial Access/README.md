@@ -2,7 +2,7 @@
 
 ---
 
-# FIN6 - Adversary Emulation Plan (Lab 1.3)
+# [FIN6 - Adversary Emulation Plan (Lab 1.3) ](https://app.cyberranges.com/scenario/624cd3877733a30007185a15)
 
 This repository contains a full simulation of the FIN6 adversary group behavior as outlined in MITRE Engenuity’s **Lab 1.3**: *Executing the FIN6 Emulation Plan*. It includes procedures from **Initial Access** via malicious Word macros to **exfiltration over FTP**, emulating real-world FIN6 TTPs.
 
