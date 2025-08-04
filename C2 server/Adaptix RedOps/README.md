@@ -81,5 +81,80 @@
 
 ## Extension kit check out: https://github.com/Adaptix-Framework/Extension-Kit
 
+```bash
+┌──(lockon💀Kali)-[~/AdaptixC2]
+└─$ git clone https://github.com/Adaptix-Framework/Extension-Kit.git
+Cloning into 'Extension-Kit'...
+remote: Enumerating objects: 979, done.
+remote: Counting objects: 100% (346/346), done.
+remote: Compressing objects: 100% (254/254), done.
+remote: Total 979 (delta 95), reused 261 (delta 79), pack-reused 633 (from 1)
+Receiving objects: 100% (979/979), 4.34 MiB | 5.23 MiB/s, done.
+Resolving deltas: 100% (321/321), done.
+                                                                                       
+┌──(lockon💀Kali)-[~/AdaptixC2]
+└─$ ls
+AdaptixClient  Dockerfile     LICENSE                   pre_install_macos_client.sh
+AdaptixServer  Extenders      Makefile                  README.md
+dist           Extension-Kit  pre_install_linux_all.sh
+                                                                                       
+┌──(lockon💀Kali)-[~/AdaptixC2]
+└─$ cd Extension-Kit 
+                                                                                       
+┌──(lockon💀Kali)-[~/AdaptixC2/Extension-Kit]
+└─$ ls
+AD-BOF         Execution-BOF      Injection-BOF        Makefile     README.md
+Creds-BOF      extension-kit.axs  LateralMovement-BOF  Postex-BOF   SAL-BOF
+Elevation-BOF  _img               LICENSE              Process-BOF  SAR-BOF
+                                                                                       
+┌──(lockon💀Kali)-[~/AdaptixC2/Extension-Kit]
+└─$ make
+=====>>  AD-BOF
+creating _bin directory
+[+] ldapsearch
+creating _bin
+[+] hash
+[+] klist
+[+] triage
+[+] dump
+[+] describe
+[+] tgtdeleg
+[+] ptt
+[+] purge
+[+] asktgt
+[+] asktgs
+[+] renew
+[+] changepw
+[+] asreproasting
+[+] kerberoasting
+[+] s4u
+[+] cross_s4u
+
+=====>>  Creds-BOF
+```
+
+---
+
+## Load All the script.
+
+
+### goto AxScript --> script manager --> right click load the .axs files.
+
+
+<img width="1440" height="870" alt="Screenshot 2025-08-04 at 7 09 38 AM" src="https://github.com/user-attachments/assets/07bd231e-480f-414f-96bc-367f4210bc10" />
+
+---
+
+
+<img width="1220" height="742" alt="Screenshot 2025-08-04 at 7 12 25 AM" src="https://github.com/user-attachments/assets/1cd70892-0737-4453-8f57-7761f538bcfa" />
+
+---
+## Now we can do a hell lot of things...........
+
+<img width="1440" height="868" alt="Screenshot 2025-08-04 at 7 13 58 AM" src="https://github.com/user-attachments/assets/dace2b44-b81c-4f50-9931-75cae54d6035" />
+
+---
+
+
 
 
