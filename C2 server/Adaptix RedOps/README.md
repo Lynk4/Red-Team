@@ -50,8 +50,8 @@
 ---
 
 
-## Transfer the agent to the target machine howerver you want. I'll use python server.
-
+## Transfer the agent to the target machine however you want. I'll use python server.
+### open the agent.
 
 <img width="692" height="393" alt="Screenshot 2025-08-04 at 6 39 42 AM" src="https://github.com/user-attachments/assets/332f8c5a-81c9-4250-a708-46cd83d0e4c2" />
 
