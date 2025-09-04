@@ -31,7 +31,7 @@ This repository is my **offensive security hub** — a collection of projects th
 - 🐹 [**Malware Development (Go)**](https://github.com/Lynk4/maldev-go)  
   🔹 Windows API, persistence, injection, evasion techniques  
 
-- 🎭 [**Tradecraft / TTPs**](https://github.com/Lynk4/Red-Team/tree/main/FIN6%20Adversary%20Emulation)  
+- 🎭 [**Tradecraft / TTPs**](https://github.com/Lynk4/Red-Team/tree/main/TTPs)  
   🔹 MITRE ATT&CK-based adversary emulation (e.g., FIN6), red team labs
   
 - 🌐 [**C2 Command & Control**](https://github.com/Lynk4/Red-Team/tree/main/C2%20server)                                
