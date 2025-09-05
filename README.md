@@ -1,4 +1,33 @@
-# Red Team
+<h1 align="center">💀 Red Team Repo</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Red%20Team-Adversary%20Simulation-darkred?style=for-the-badge&logo=skull" />
+  <img src="https://img.shields.io/badge/TTPs-%F0%9F%94%AB%20MITRE%20ATT%26CK-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/C2-Adaptix%20%7C%20Custom-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Scope-Initial%20Access%20%7C%20Persistence%20%7C%20Evasion-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Active%20Directory-Enumeration%20%7C%20Attacks-darkgreen?style=for-the-badge&logo=microsoft" />
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-lightgrey?style=for-the-badge&logo=windows" />
+  <img src="https://img.shields.io/badge/MalDev-Go%20%7C%20Shellcode%20Loader-black?style=for-the-badge&logo=go" />
+  <img src="https://img.shields.io/badge/Exploit-Development-critical?style=for-the-badge&logo=gnu" />
+  <img src="https://img.shields.io/badge/AV-Evasion-success?style=for-the-badge&logo=shield" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Lang-Assembly-green?style=for-the-badge&logo=asm" />
+  <img src="https://img.shields.io/badge/Lang-C-blue?style=for-the-badge&logo=c" />
+  <img src="https://img.shields.io/badge/Lang-C++-blueviolet?style=for-the-badge&logo=c%2B%2B" />
+  <img src="https://img.shields.io/badge/Lang-Go-cyan?style=for-the-badge&logo=go" />
+</p>
+
+---
+
+
+
+
+
+
+
+
 
 ---
 <p align="center">
