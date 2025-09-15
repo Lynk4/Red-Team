@@ -11,6 +11,24 @@
 
 ---
 
+## ⚡ Staged vs Stageless Payload 🔥
+
+### 🪄 Staged (two-part)
+- 📦 What: Tiny stager delivered first → it downloads/loads the larger payload.
+- ✅ Pro: tiny initial footprint (fits tight vectors).
+- ⚠️ Con: needs network fetch — observable.
+
+### 💥 Stageless (single-file)
+- 📡 What: Everything delivered and executed at once — no follow-up fetch.
+- ✅ Pro: reliable, works offline/air-gapped.
+- ⚠️ Con: bigger footprint — easier to detect.
+
+### 🛡️ Defender one-liner
+Watch for short-lived small processes that immediately fetch or write larger binaries — that’s your red flag. 🚩
+
+
+
+
 ---
 ## **Example 1:**
 ## Generate metasploit stageless payload.
@@ -152,8 +170,11 @@ executor.exe*  shellcode.cpp
 
 ---
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8536b35b-ab41-40b7-9867-eee64d2bfc78" alt="Banner Screenshot 2025-09-15 at 11 23 31 PM" style="width:100%; max-width:1200px; height:auto;" />
+</p>
 
-<img width="764" height="317" alt="Screenshot 2025-09-15 at 11 23 31 PM" src="https://github.com/user-attachments/assets/8536b35b-ab41-40b7-9867-eee64d2bfc78" />
+
 
 ---
 
