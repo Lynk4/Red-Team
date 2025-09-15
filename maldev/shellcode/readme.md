@@ -1,7 +1,18 @@
-# Maldev.......
+# Maldev
+---
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9f6db4ad-f12b-4b63-83f6-562ffc7b89ea" alt="malware-z0duu5zao940t2vz" />
+</p>
 
 ---
 
+> Educational repository focused on Windows API concepts, defensive detection, safe demos, and learning resources for red-teamers and defenders. **No malicious payloads or runnable shellcode are included.**
+
+---
+
+---
+## **Example 1:**
 ## Generate metasploit stageless payload.
 
 ```bash
