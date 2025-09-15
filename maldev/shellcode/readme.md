@@ -7,8 +7,7 @@
 
 ---
 
-> Educational repository focused on Windows API concepts, defensive detection, safe demos, and learning resources for red-teamers and defenders. **No malicious payloads or runnable shellcode are included.**
-
+> Educational repository focused on Windows API concepts, defensive detection, safe demos, and learning resources for red-teamers and defenders.
 ---
 
 ## ⚡ Staged vs Stageless Payload 🔥
