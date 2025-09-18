@@ -84,3 +84,30 @@ This repository is my **offensive security hub** — a collection of projects th
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=000000&height=200&section=footer&text=🚀%20Stay%20Curious%20%7C%20Stay%20Ethical%20%7C%20Hack%20the%20Planet%20🌍&fontSize=25&fontColor=ffffff&animation=fadeIn" />
 </p>
+
+---
+
+# ⚠️ LEGAL DISCLAIMER
+
+## 🎯 ALLOWED
+- ✅ Educational purposes 📚  
+- ✅ Authorized penetration testing 🖋️
+- ✅ CTF competitions 🏆
+- ✅ Research 🔬
+
+## 🚫 PROHIBITED  
+- ❌ Unauthorized access 🔓
+- ❌ Malicious activities ⚔️
+- ❌ Illegal hacking 🏴‍☠️
+
+## ⚖️ RESPONSIBILITY
+- 🙅‍♂️ **You are solely liable** for misuse
+- ⚖️ **Comply with all laws** (CFAA, GDPR, etc.)
+- 📝 **Get written permission** before testing
+- 🚓 **Legal consequences** possible for abuse
+
+---
+
+> **🛡️ Use responsibly. Stay ethical. Stay legal.** 🛡️
+
+---
