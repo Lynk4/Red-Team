@@ -16,7 +16,8 @@ This repository is for *educational & defensive* research only. Do **not** use t
 | Seq | Path | Purpose | Notes & Safety |
 |:---:|---|---|---|
 | 1️⃣ | [`shellcode`](https://github.com/Lynk4/Red-Team/tree/main/maldev/shellcode) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
-| 2️⃣ | `process-injection` | Injection techniques & detection 🪄 | Focus on concepts + defensive detection. Mark anything dual-use clearly. |
+| 2️⃣ | [`Process-injection`](https://github.com/Lynk4/Red-Team/tree/main/maldev/process%20injection) | Injection techniques & detection 🪄 | Focus on concepts + defensive detection. Mark anything dual-use clearly. |
+| 3️⃣ | [`Process Spoofing`](https://github.com/Lynk4/Red-Team/tree/main/maldev/shellcode) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
 
 
 
