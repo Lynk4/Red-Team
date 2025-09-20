@@ -1,0 +1,7 @@
+﻿  source.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+C:\Users\RedTeam\source\repos\Project1\source.cpp(23): warning C4715: 'GetPidByName': not all control paths return a value
+  All 5 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Project1.vcxproj -> C:\Users\RedTeam\source\repos\Project1\x64\Release\Project1.exe
