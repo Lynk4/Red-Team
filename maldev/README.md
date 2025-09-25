@@ -18,11 +18,11 @@ This repository is for *educational & defensive* research only. Do **not** use t
 | 1️⃣ | [`shellcode`](https://github.com/Lynk4/Red-Team/tree/main/maldev/shellcode) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
 | 2️⃣ | [`Process-injection`](https://github.com/Lynk4/Red-Team/tree/main/maldev/process%20injection) | Injection techniques & detection 🪄 | Focus on concepts + defensive detection. Mark anything dual-use clearly. |
 | 3️⃣ | [`Process Spoofing`](https://github.com/Lynk4/Red-Team/tree/main/maldev/process%20spoofing) | Demonstrate parent-process spoofing for detection, forensics & mitigation — show how to spot and remediate spoofed ancestry. 🕶️🛡️ | Running code inside another process’s memory to hide or escalate. 🕵️‍♂️ |
+| 4️⃣ | [`Dll Hijacking`](https://github.com/Lynk4/Red-Team/tree/main/maldev/dll%20hijacking) | Demonstrate how Windows DLL search-order can be abused so defenders can detect, analyze, and mitigate unauthorized DLL loads. 🛡️ | A trusted executable can be turned into an execution vector if an unexpected DLL is placed nearby. |
 
-| 3️⃣ | [`Process Spoofing`](https://github.com/Lynk4/Red-Team/tree/main/maldev/process%20spoofing) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
+| 3️⃣ | [`Process Spoofing`](https://github.com/Lynk4/Red-Team/tree/main/maldev/dll%20hijacking) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
 
-| 3️⃣ | [`Process Spoofing`](https://github.com/Lynk4/Red-Team/tree/main/maldev/process%20spoofing) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
-
+| 3️⃣ | [`Process Spoofing`](https://github.com/Lynk4/Red-Team/tree/main/maldev/dll%20hijacking) | Shellcode theory & safe demos 🧩 | Msfvenom shell code generator. Windows Reverse shell |
 
 ---
 
