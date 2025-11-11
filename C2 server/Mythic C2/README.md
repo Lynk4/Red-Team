@@ -2,7 +2,6 @@
 
 # **Implementation and Analysis of the Mythic C2 Framework**
 
-DATE: [Oct 9, 2025]
 
 ## **1. Introduction**
 
