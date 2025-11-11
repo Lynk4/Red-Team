@@ -30,9 +30,6 @@ This repository is for *educational & defensive* research only. Do **not** use t
 
 
 
-https://github.com/Lynk4/Red-Team/tree/main/maldev/Classic%20injection
-
-
 
 ---
 
