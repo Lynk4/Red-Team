@@ -58,8 +58,11 @@ This repository is my **offensive security hub** — a collection of projects th
   🔹 Vulnerability research, memory corruption, PoCs, shellcoding  
 
 - 🐹 [**Malware Development (Go)**](https://github.com/Lynk4/maldev-go)  
-  🔹 Windows API, persistence, injection, evasion techniques  
+  🔹 Windows API, persistence, injection, evasion techniques
 
+- 🦠 [**Malware Development in Rust**](https://github.com/Lynk4/maldev-rust)                         
+  🔹 A practical collection of Rust experiments for low-level Windows API programming, malware research, and reverse engineering.
+  
 - 🎭 [**Tradecraft / TTPs**](https://github.com/Lynk4/Red-Team/tree/main/TTPs)  
   🔹 MITRE ATT&CK-based adversary emulation (e.g., FIN6), red team labs
   
