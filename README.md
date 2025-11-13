@@ -10,6 +10,9 @@
   <img src="https://img.shields.io/badge/MalDev-Go%20%7C%20Shellcode%20Loader-black?style=for-the-badge&logo=go" />
   <img src="https://img.shields.io/badge/Exploit-Development-critical?style=for-the-badge&logo=gnu" />
   <img src="https://img.shields.io/badge/AV-Evasion-success?style=for-the-badge&logo=shield" />
+  <img src="https://img.shields.io/badge/MalDev-Rust%20%7C%20Shellcode%20Loader-black?style=for-the-badge&logo=rust&logoColor=white" />
+  <img src="https://img.shields.io/badge/Exploit-Development-critical?style=for-the-badge&logo=rust&logoColor=white" />
+<img src="https://img.shields.io/badge/AV-Evasion-success?style=for-the-ba
 </p>
 
 <p align="center">
