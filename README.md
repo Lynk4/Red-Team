@@ -70,7 +70,7 @@ This repository is my **offensive security hub** — a collection of projects th
   🔹 MITRE ATT&CK-based adversary emulation (e.g., FIN6), red team labs
   
 - 🌐 [**C2 Command & Control**](https://github.com/Lynk4/Red-Team/tree/main/C2%20server)                                
-  🔹 Adaptix C2 → A modular, lightweight C2 framework with focus on stealth and operator usability.
+  🔹 Adaptix C2 → A modular, lightweight C2 framework with focus on stealth and operator usability.                      
   🔹 Mythic C2 → Installation, Discord profile configuration.
 
 ---
