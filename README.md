@@ -72,6 +72,9 @@ This repository is my **offensive security hub** — a collection of projects th
 - 🌐 [**C2 Command & Control**](https://github.com/Lynk4/Red-Team/tree/main/C2%20server)                                
   🔹 Adaptix C2 → A modular, lightweight C2 framework with focus on stealth and operator usability.                      
   🔹 Mythic C2 → Installation, Discord profile configuration.
+  
+- 🌐 [**Project C2**](https://github.com/Lynk4/Project-C2)                                
+  🔹 Notion C2 - You just tick a checkbox → command executes on the target                   
 
 ---
 
